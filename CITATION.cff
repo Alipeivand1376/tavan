@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "tavan: Lightweight time-series scenario generation and forecasting"
+abstract: >-
+  tavan is a dependency-light Python library for probabilistic time-series
+  scenario generation and forecasting in power systems, energy and finance.
+  Its only hard dependency is NumPy; all deep-learning models run on a
+  built-in CPU automatic-differentiation engine.
+authors:
+  - family-names: Peivand
+    given-names: Ali
+version: 0.1.0
+date-released: "2026-10-13"
+license: MIT
+repository-code: "https://github.com/Alipeivand1376/tavan"
+keywords:
+  - time series
+  - scenario generation
+  - probabilistic forecasting
+  - power systems
+  - generative models
+  - conformal prediction
+  - false data injection
+  - moving target defense

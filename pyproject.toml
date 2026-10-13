@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tavan"
+version = "0.1.0"
+description = "Lightweight time-series scenario generation and forecasting for power systems, energy and finance — NumPy-only, CPU, no deep-learning framework."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Ali Peivand" }]
+keywords = [
+    "time-series", "scenario-generation", "probabilistic-forecasting", "power-systems",
+    "smart-grid", "generative-models", "diffusion", "normalizing-flows", "cvar",
+    "conformal-prediction", "false-data-injection", "moving-target-defense", "numpy",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Operating System :: OS Independent",
+]
+dependencies = ["numpy>=1.22"]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.5"]
+pandas = ["pandas>=1.4"]
+test = ["pytest>=7.0"]
+docs = ["mkdocs-material>=9.0", "mkdocstrings[python]>=0.24"]
+dev = ["tavan[plot,pandas,test,docs]", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/Alipeivand1376/tavan"
+Repository = "https://github.com/Alipeivand1376/tavan"
+Issues = "https://github.com/Alipeivand1376/tavan/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tavan = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 140
+target-version = "py39"
+src = ["src"]
+
+[tool.ruff.lint]
+# target 3.9+, so we keep typing.Optional/Dict rather than enforce PEP 604/585 (UP)
+select = ["E", "F", "I", "W", "B"]
+ignore = ["E741", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["E402"]

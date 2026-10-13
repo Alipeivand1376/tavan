@@ -1,0 +1,39 @@
+site_name: tavan
+site_description: Lightweight time-series scenario generation and forecasting
+repo_url: https://github.com/Alipeivand1376/tavan
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle: { icon: material/brightness-7, name: Dark mode }
+    - scheme: slate
+      primary: indigo
+      toggle: { icon: material/brightness-4, name: Light mode }
+  features: [navigation.sections, content.code.copy, toc.integrate]
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Scenario generation: scenarios.md
+  - Forecasting: forecasting.md
+  - Power systems & FDI: power.md
+  - Extending tavan: extending.md
+  - API reference: api.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_root_heading: true
+            show_source: false
+            members_order: source
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc: { permalink: true }
