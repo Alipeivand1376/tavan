@@ -12,6 +12,21 @@ def test_public_api_imports():
         assert hasattr(tavan, name)
 
 
+def test_plotting_smoke():
+    # guards against the viz module being shadowed / mispackaged
+    matplotlib = pytest.importorskip("matplotlib")
+    matplotlib.use("Agg")
+    from tavan.generate import ScenarioGenerator
+    from tavan.forecast import DLinear
+
+    ts = tavan.make_load(40, seed=0)
+    scen = ScenarioGenerator("gmm").fit(ts).sample(50)
+    scen.plot()                                   # exercises tavan.viz.plot_scenarios
+    ts.plot()
+    y = ts.to_numpy()
+    DLinear(48, 12).fit(y).predict(horizon=12).plot(history=y[-48:])
+
+
 def test_registry_populated():
     reg = available()
     assert "diffusion" in reg["generator"]
